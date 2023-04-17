@@ -1,0 +1,41 @@
+@use "variables" as var;
+
+.board {
+    position: relative;
+    width: 20rem;
+    height: 12rem;
+    margin: 0 auto;
+    background-image: url('/assets/img/bg-triangle.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: top;
+
+    @media (min-width:768px) {
+        width: 30rem;
+        height: 22rem;
+    }
+
+    @media (min-width:1200px) {
+        width: 38rem;
+        height: 25rem;
+    }
+}
+
+.board__paper {
+    position: absolute;
+    left: 10px;
+    top: -50px;
+}
+
+.board__scissors {
+    position: absolute;
+    right: 10px;
+    top: -50px;
+}
+
+.board__rock {
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+}
