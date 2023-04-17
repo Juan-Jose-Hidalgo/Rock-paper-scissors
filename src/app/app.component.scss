@@ -1,0 +1,22 @@
+@use "mixins" as mix;
+
+.container {
+    @include mix.flex-box(column, wrap, center, center);
+    width: 90%;
+    max-width: 1440px;
+    min-height: 100vh;
+    padding: 2rem 0;
+    margin: 0 auto;
+
+    @media (min-width:768px) {
+        width: 80%;
+    }
+
+    @media (min-width: 1200px) {
+        width: 55%;
+    }
+}
+
+.header {
+    width: 100%;
+}

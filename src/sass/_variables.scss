@@ -6,6 +6,7 @@ $colors-map: (
     "dark-text": hsl(229, 25%, 31%),
     "score-text": hsl(229, 64%, 46%),
     "header-outline": hsl(217, 16%, 45%),
+    "background":hsl(237, 49%, 15%)
 );
 
 $gradiants-map: (
@@ -17,5 +18,5 @@ $gradiants-map: (
     "cyan": linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(64, 185, 206, 1) 0%, rgba(82, 190, 209, 1) 100%),
 
     //* BACKGROUND
-    "background": linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(31, 55, 86, 1) 0%, rgba(20, 21, 57, 1) 100%)
+    "background": radial-gradient(hsl(214, 43%, 35%), hsl(237, 49%, 15%))
 );
