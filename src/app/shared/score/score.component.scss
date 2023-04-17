@@ -3,10 +3,19 @@
 
 .score {
     @include mix.flex-box(row, nowrap, space-between, center);
-    width: 100%;
+    width: 20rem;
     border: 3px solid map-get($map: var.$colors-map, $key: "header-outline");
     padding: 1rem;
+    margin: 0 auto;
     border-radius: .625rem;
+
+    @media (min-width:768px) {
+        width: 35rem;
+    }
+
+    @media (min-width:1200px) {
+        width: 50rem;
+    }
 }
 
 .score__logo {
@@ -25,11 +34,19 @@
     }
 }
 
+.score__img {
+    object-fit: contain;
+}
+
 .score__score {
     text-align: center;
     padding: .25rem 1.5rem;
     border-radius: .625rem;
     background-color: whitesmoke;
+
+    @media (min-width:768px) {
+        padding: .75rem 2.5rem;
+    }
 }
 
 .score__span {
