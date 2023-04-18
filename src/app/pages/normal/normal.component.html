@@ -1,15 +1,15 @@
 <section class="board">
 
     <div class="board__paper">
-        <app-button [btnName]="'paper'" (click)="selectOption('paper')"></app-button>
+        <app-button [btnName]="'paper'" (click)="play('paper')"></app-button>
     </div>
 
     <div class="board__scissors">
-        <app-button [btnName]="'scissors'" (click)="selectOption('scissors')"></app-button>
+        <app-button [btnName]="'scissors'" (click)="play('scissors')"></app-button>
     </div>
 
     <div class="board__rock">
-        <app-button [btnName]="'rock'" (click)="selectOption('rock')"></app-button>
+        <app-button [btnName]="'rock'" (click)="play('rock')"></app-button>
     </div>
 
 </section>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-score',
@@ -7,6 +7,6 @@ import { Component } from '@angular/core';
 })
 export class ScoreComponent {
 
-  public score = 10;
+  @Input() score = 0;
 
 }
