@@ -16,23 +16,27 @@ export class ResultsComponent implements OnInit {
   private gameOptions = ['rock', 'paper', 'scissors'];
 
   constructor(
-    private cs: CookieService,
-    private gs: GameService
+    private cookieService: CookieService,
+    private gameService: GameService
   ) { }
 
-
-
-  async ngOnInit(): Promise<void> {
-    this.userMove = this.cs.get('userMove');
-    await this.getCpuMove();
-    this.getResult();
+  ngOnInit(): void {
+    this.userMove = this.cookieService.get('userMove');
+    this.calculateResult();
   }
 
-  async getCpuMove(): Promise<void> {
-    this.cpuMove = await this.gs.cpuMove(this.gameOptions);
-  }
+  /**
+   * Calculates the result of the game and assigns it to the 'result' property.
+   * Sets the CPU move to the 'cpuMove' property.
+   *
+   * @memberof ResultsComponent
+   * @returns {Promise<void>} A Promise that resolves when the result and CPU move have been calculated and assigned.
+   */
+  async calculateResult(): Promise<void> {
+    //Get cpu move
+    this.cpuMove = await this.gameService.cpuMove(this.gameOptions);
 
-  getResult() {
-    this.result = this.gs.setGame(this.userMove, this.cpuMove, 'normalGameScore');
+    //Calculate the result of the game
+    this.result = this.gameService.setGame(this.userMove, this.cpuMove, 'normalGameScore');
   }
 }
