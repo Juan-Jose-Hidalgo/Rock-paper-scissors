@@ -8,7 +8,7 @@ import { GameService } from './services/game.service';
 })
 export class AppComponent implements OnInit {
   title = 'Rock Paper Scissors';
-  score = 1;
+  toogleModal = false;
 
   constructor(
     private gs: GameService
@@ -20,5 +20,13 @@ export class AppComponent implements OnInit {
 
   get getScore() {
     return this.gs.getScore;
+  }
+
+  openModal() {
+    this.toogleModal = true;
+  }
+
+  closeModal(event: boolean) {
+    this.toogleModal = event;
   }
 }

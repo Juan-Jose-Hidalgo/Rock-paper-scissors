@@ -11,7 +11,7 @@
     </main>
 
     <section class="rules">
-        <button class="rules__btn">Rules</button>
+        <button class="rules__btn" (click)="openModal()">Rules</button>
     </section>
 
     <!--* Footer -->
@@ -22,5 +22,7 @@
         </span>
         <span>Coded by <a class="footer__a" href="#">Juan Hidalgo</a>.</span>
     </footer>
-
 </div>
+
+<!--* Modal rules -->
+<app-rules *ngIf="toogleModal" (close)="closeModal($event)"></app-rules>

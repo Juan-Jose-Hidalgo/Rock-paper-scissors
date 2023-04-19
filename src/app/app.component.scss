@@ -26,9 +26,16 @@
     color: map-get($map: var.$colors-map, $key: "white");
     border: 2px solid map-get($map: var.$colors-map, $key: "white");
     border-radius: 5px;
-    padding: .5rem 1rem;
+    padding: .8rem 2rem;
     text-transform: uppercase;
     letter-spacing: 3px;
+    cursor: pointer;
+    transition: all .5s ease;
+
+    &:hover {
+        color: map-get($map: var.$colors-map, $key: "background");
+        background-color: map-get($map: var.$colors-map, $key: "white");
+    }
 
     @media (min-width: 1330px) {
         align-self: flex-end;
