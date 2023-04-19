@@ -1,24 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { NormalRoutingModule } from './normal-routing.module';
+import { ResultsRoutingModule } from './results-routing.module';
 
 import { ComponentsModule } from 'src/app/components/components.module';
 
-import { NormalComponent } from './normal.component';
+import { ResultsComponent } from './results.component';
 
 
 @NgModule({
   declarations: [
-    NormalComponent
-  ],
-  exports: [
-    NormalComponent
+    ResultsComponent
   ],
   imports: [
     CommonModule,
     ComponentsModule,
-    NormalRoutingModule,
+    ResultsRoutingModule,
   ]
 })
-export class NormalModule { }
+export class ResultsModule { }

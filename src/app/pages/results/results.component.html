@@ -1,0 +1,27 @@
+<section class="results">
+
+    <div class="button button--user">
+        <div class="button__container">
+            <app-button [btnName]="userMove" class="button__app" [ngClass]="{'button--win': result === 'you win'}"></app-button>
+        </div>
+        <span class="results__span">You picked</span>
+    </div>
+
+    <div class="button button--cpu">
+        <div class="button__container">
+            <app-button [btnName]="cpuMove" *ngIf="cpuMove === 'none';else move"></app-button>
+
+            <ng-template #move>
+                <app-button [btnName]="cpuMove" class="button__app" [ngClass]="{'button--win': result === 'you lose'}"></app-button>
+            </ng-template>
+
+        </div>
+        <span class="results__span">The house picked</span>
+    </div>
+
+    <div class="results__info" *ngIf="result !== ''">
+        <h2 class="results__h2">{{result}}</h2>
+        <a routerLink="/normal-game" class="results__btn">Play again</a>
+    </div>
+    
+</section>

@@ -1,0 +1,13 @@
+<div class="rules" #rules>
+    <div class="rules__container">
+        <h2 class="rules__title">Rules</h2>
+
+        <div class="rules-image">
+            <img [ngSrc]="rulesImageUrl" alt="Rules definition" fill class="rules-image__img">
+        </div>
+
+        <button class="rules-btn" (click)="closeModal()">
+            <img ngSrc="/assets/img/icon-close.svg" fill alt="Icon close" class="rules-btn__img">
+        </button>
+    </div>
+</div>
