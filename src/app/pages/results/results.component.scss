@@ -60,6 +60,7 @@
 
     @media (min-width:1200px) {
         height: 15.625rem;
+        order: 2;
     }
 }
 
@@ -75,6 +76,11 @@
 .results__span {
     color: map-get($map: var.$colors-map, $key: "white");
     text-transform: uppercase;
+
+    @media (min-width:1330px){
+        font-size: 1.5rem;
+        order: 1;
+    }
 }
 
 .results__info {

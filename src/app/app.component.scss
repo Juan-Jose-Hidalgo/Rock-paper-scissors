@@ -46,9 +46,10 @@
     @include mix.flex-box(row, nowrap, center, center);
     gap: 1rem;
     font-size: 11px;
+    color: hsl(228, 45%, 44%);
 }
 
 .footer__a {
     display: inline;
-    color: hsl(228, 45%, 44%);
+    color: map-get($map: var.$colors-map, $key: "white");
 }
