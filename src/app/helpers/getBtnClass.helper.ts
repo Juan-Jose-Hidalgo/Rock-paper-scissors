@@ -10,5 +10,5 @@ const btnClass: ClassType = {
 
 
 export const getBtnClass = (name: string) => {
-    return btnClass[name];
+    return btnClass[name] || 'board__btn board__btn--none';
 }

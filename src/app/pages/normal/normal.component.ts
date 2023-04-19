@@ -9,8 +9,6 @@ import { GameService } from 'src/app/services/game.service';
 })
 export class NormalComponent implements OnInit {
 
-  private gameOptions = ['rock', 'paper', 'scissors'];
-
   constructor(
     private route: Router,
     private gs: GameService

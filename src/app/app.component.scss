@@ -1,8 +1,8 @@
 @use "mixins" as mix;
+@use "variables" as var;
 
 .container {
-    @include mix.flex-box(column, nowrap, flex-start, center);
-    gap: 5rem;
+    @include mix.flex-box(column, nowrap, space-between, center);
     width: 90%;
     max-width: 1440px;
     height: 100vh;
@@ -11,6 +11,37 @@
     margin: 0 auto;
 }
 
-.header, .main{
+.header,
+.main,
+.footer {
     width: 100%;
+}
+
+.rules {
+    @include mix.flex-box(column, nowrap, center, center);
+    width: 100%;
+}
+
+.rules__btn {
+    color: map-get($map: var.$colors-map, $key: "white");
+    border: 2px solid map-get($map: var.$colors-map, $key: "white");
+    border-radius: 5px;
+    padding: .5rem 1rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+
+    @media (min-width: 1330px) {
+        align-self: flex-end;
+    }
+}
+
+.footer {
+    @include mix.flex-box(row, nowrap, center, center);
+    gap: 1rem;
+    font-size: 11px;
+}
+
+.footer__a {
+    display: inline;
+    color: hsl(228, 45%, 44%);
 }

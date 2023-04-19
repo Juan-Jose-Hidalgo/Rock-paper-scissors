@@ -2,8 +2,8 @@
 
 .board__btn {
     position: relative;
-    width: 8rem;
-    height: 8rem;
+    width: 7rem;
+    height: 7rem;
     background-color: map-get($map: var.$colors-map, $key: "white");
     background-size: 3rem;
     background-repeat: no-repeat;
@@ -46,4 +46,25 @@
     border-color: map-get($map: var.$colors-map, $key: "rock-2");
     box-shadow: inset 0 4px #c0c2c4, 0 5px map-get($map: var.$colors-map, $key: "rock");
     background-image: url('/assets/img/icon-rock.svg');
+}
+
+.board__btn--none {
+    width: 6rem;
+    height: 6rem;
+    background-color: map-get($map: var.$colors-map, $key: "background");
+    background-size: initial;
+    border-radius: 50%;
+    border: none;
+    justify-self: center;
+    opacity: .3;
+
+    @media (min-width: 768px) {
+        width: 8rem;
+        height: 8rem;
+    }
+
+    // @media (min-width: 1200px) {
+    //     width: 10rem;
+    //     height: 10rem;
+    // }
 }

@@ -11,7 +11,7 @@ const routes: Routes = [
   {
     path: 'normal-game-results',
     title: 'Game Results',
-    loadChildren: () => import('./pages/normal-results/normal-results.module').then(m => m.NormalResultsModule)
+    loadChildren: () => import('./pages/results/results.module').then(m => m.ResultsModule)
   },
 
   { path: '**', redirectTo: 'normal-game', pathMatch: 'full' },
