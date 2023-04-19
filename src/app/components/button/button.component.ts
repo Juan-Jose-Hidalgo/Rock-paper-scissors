@@ -7,8 +7,8 @@ import { getBtnClass } from 'src/app/helpers/getBtnClass.helper';
   styleUrls: ['./button.component.scss']
 })
 export class ButtonComponent implements OnInit {
-  @Input() btnName = 'paper';
-  public clasess = 'board__btn board__btn--paper';
+  @Input() btnName = 'none';
+  public clasess = 'board__btn board__btn--none';
 
   ngOnInit(): void {
     this.getClasses();

@@ -3,6 +3,7 @@ import { CommonModule, NgOptimizedImage } from '@angular/common';
 
 import { ButtonComponent } from './button/button.component';
 import { ScoreComponent } from './score/score.component';
+import { RulesComponent } from './rules/rules.component';
 
 
 
@@ -10,14 +11,16 @@ import { ScoreComponent } from './score/score.component';
   declarations: [
     ButtonComponent,
     ScoreComponent,
+    RulesComponent,
   ],
   exports: [
     ButtonComponent,
-    ScoreComponent
+    ScoreComponent,
+    RulesComponent
   ],
   imports: [
     CommonModule,
     NgOptimizedImage
   ]
 })
-export class SharedModule { }
+export class ComponentsModule { }

@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.gs.checkLocalScore('normalGame');
+    this.gs.checkLocalScore('normalGameScore');
   }
 
   get getScore() {
