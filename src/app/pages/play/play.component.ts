@@ -12,8 +12,7 @@ export class PlayComponent implements OnInit {
   public scoreImg = '/assets/img/logo-bonus.svg';
   public scoreClass = 'score__logo score__logo--bonus';
   public scoreValue = 0;
-
-  private gameMode = 'normal';
+  public gameMode = 'normal';
 
   constructor(
     private route: Router,

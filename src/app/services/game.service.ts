@@ -63,6 +63,7 @@ export class GameService {
     return options[randomNumber];
   }
 
+  //ToDo: Document this method.
   getGameMode(){
     return this.cs.get('gameMode');
   }

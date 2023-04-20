@@ -5,19 +5,15 @@
     </header>
 
 
-    <main class="board">
+    <main class="play__main">
 
-        <div class="board__paper">
-            <app-button [btnName]="'paper'" (click)="play('paper')"></app-button>
-        </div>
+        <section class="play__section">
+            <app-normal-board *ngIf="gameMode === 'normal'"></app-normal-board>
+        </section>
 
-        <div class="board__scissors">
-            <app-button [btnName]="'scissors'" (click)="play('scissors')"></app-button>
-        </div>
-
-        <div class="board__rock">
-            <app-button [btnName]="'rock'" (click)="play('rock')"></app-button>
-        </div>
+        <section class="play__section">
+            Rules
+        </section>
 
     </main>
 
