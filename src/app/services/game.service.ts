@@ -63,6 +63,10 @@ export class GameService {
     return options[randomNumber];
   }
 
+  getGameMode(){
+    return this.cs.get('gameMode');
+  }
+
   /**
    * Stores the user's move selection in a cookie.
    * 

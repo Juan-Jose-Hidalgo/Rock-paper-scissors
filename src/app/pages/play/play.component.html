@@ -1,0 +1,24 @@
+<div class="play">
+
+    <header class="play__header">
+        <app-score [scoreImage]="scoreImg" [scoreClass]="scoreClass" [scoreValue]="scoreValue"></app-score>
+    </header>
+
+
+    <main class="board">
+
+        <div class="board__paper">
+            <app-button [btnName]="'paper'" (click)="play('paper')"></app-button>
+        </div>
+
+        <div class="board__scissors">
+            <app-button [btnName]="'scissors'" (click)="play('scissors')"></app-button>
+        </div>
+
+        <div class="board__rock">
+            <app-button [btnName]="'rock'" (click)="play('rock')"></app-button>
+        </div>
+
+    </main>
+
+</div>

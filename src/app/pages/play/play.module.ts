@@ -1,24 +1,24 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { NormalRoutingModule } from './normal-routing.module';
+import { PlayRoutingModule } from './play-routing.module';
 
 import { ComponentsModule } from 'src/app/components/components.module';
 
-import { NormalComponent } from './normal.component';
+import { PlayComponent } from './play.component';
 
 
 @NgModule({
   declarations: [
-    NormalComponent
+    PlayComponent
   ],
   exports: [
-    NormalComponent
+    PlayComponent
   ],
   imports: [
     CommonModule,
     ComponentsModule,
-    NormalRoutingModule,
+    PlayRoutingModule,
   ]
 })
 export class NormalModule { }
