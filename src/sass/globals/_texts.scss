@@ -1,0 +1,17 @@
+@use "variables" as var;
+
+.heading-1 {
+    color: map-get($map: var.$colors-map, $key: "white");
+    font-weight: 700;
+    font-size: 2rem;
+    text-align: center;
+    text-transform: uppercase;
+
+    @media (min-width: 768px){
+        font-size: 3rem;
+    }
+
+    @media (min-width:1330px){
+        font-size: 3.5rem;
+    }
+}

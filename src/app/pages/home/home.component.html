@@ -1,0 +1,23 @@
+<div class="home">
+
+    <!--* Header -->
+    <header class="header">
+        <h1 class="heading-1">Choose game mode</h1>
+    </header>
+
+    <!--* Main -->
+    <main class="main">
+
+        <div class="main__scores">
+            <app-score [scoreValue]="getScore" class="main__score"></app-score>
+            <app-score [scoreClass]="bonusClass" [scoreImage]="bonusImg" [scoreValue]="getScore"
+                class="main__score"></app-score>
+        </div>
+
+        <div class="main__actions">
+            <button class="main__btn">Reset normal Score</button>
+            <button class="main__btn">Reset advanced Score</button>
+        </div>
+    </main>
+
+</div>

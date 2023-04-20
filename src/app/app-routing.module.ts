@@ -3,6 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
+    path: 'home',
+    title: 'Rock-Paper-Scissors | Home',
+    loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule)
+  },
+  {
     path: 'normal-game',
     title: 'Start Game',
     loadChildren: () => import('./pages/normal/normal.module').then(m => m.NormalModule)
@@ -14,7 +19,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/results/results.module').then(m => m.ResultsModule)
   },
 
-  { path: '**', redirectTo: 'normal-game', pathMatch: 'full' },
+  { path: '**', redirectTo: 'home', pathMatch: 'full' },
 
 ];
 

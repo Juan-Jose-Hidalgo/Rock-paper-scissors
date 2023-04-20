@@ -34,6 +34,20 @@
     }
 }
 
+.score__logo--bonus {
+    height: 7rem;
+
+    @media (min-width:768px) {
+        width: 10rem;
+        height: 10rem;
+    }
+
+    @media (min-width: 1200px) {
+        width: 13rem;
+        height: 13rem;
+    }
+}
+
 .score__img {
     object-fit: contain;
 }
