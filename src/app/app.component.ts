@@ -1,26 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { GameService } from './services/game.service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'Rock Paper Scissors';
   toogleModal = false;
-
-  constructor(
-    private gs: GameService
-  ) { }
-
-  ngOnInit() {
-    this.gs.checkLocalScore('normalGameScore');
-  }
-
-  get getScore() {
-    return this.gs.getScore;
-  }
 
   openModal() {
     this.toogleModal = true;

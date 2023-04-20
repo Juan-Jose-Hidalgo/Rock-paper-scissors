@@ -8,7 +8,8 @@ import { ScoreTable } from '../models/score-table.type';
 })
 export class GameService {
 
-  private score = 0;
+  private normalScore = 0;
+  private advancedScore = 0;
 
   private scoreTable: ScoreTable = {
     'you win': 1,
@@ -26,25 +27,26 @@ export class GameService {
     private cs: CookieService
   ) { }
 
-  get getScore() {
-    return this.score;
+  get getNormalScore() {
+    const localScore = this.checkLocalScore('normalGameScore');
+
+    if (!isNaN(localScore)) {
+      this.normalScore = localScore;
+      this.cs.set('normalGameScore', this.normalScore.toString());
+    }
+
+    return this.normalScore;
   }
 
-  /**
-   * Checks the local score stored in the cookie and sets it to this.score attribute.
-   * If the score is not found in the cookie, it sets the score to 0.
-   * 
-   * @memberof GameService
-   * @param {string} type - The type of score to check ('user' or 'cpu').
-   * @returns {void}
-   */
-  checkLocalScore(scoreType: string): number {
-    const localScore = parseInt(this.cs.get(scoreType) || '0');
+  get getAdvancedScore() {
+    const localScore = this.checkLocalScore('advancedGameScore');
+
     if (!isNaN(localScore)) {
-      this.score += localScore;
-      this.cs.set(scoreType, this.score.toString());
+      this.advancedScore = localScore;
+      this.cs.set('advancedGameScore', this.advancedScore.toString());
     }
-    return this.score;
+
+    return this.advancedScore;
   }
 
   /**
@@ -70,6 +72,10 @@ export class GameService {
    */
   play(userMove: string): void {
     this.cs.set('userMove', userMove);
+  }
+
+  resetScore(scoreType: string) {
+    this.cs.set(scoreType, '0');
   }
 
   /**
@@ -99,7 +105,7 @@ export class GameService {
 
     //Calculates the new score and updates the score attribute.
     const newScore = this.calculateNewScore(result, currentScore);
-    this.score = newScore;
+    this.normalScore = newScore;
     this.cs.set(scoreType, newScore.toString());
   };
 
@@ -130,6 +136,11 @@ export class GameService {
     const scoreChange = this.scoreTable[result] ?? 0;
     return currentScore + scoreChange;
   };
+
+  //ToDo: document method
+  private checkLocalScore(scoreType: string): number {
+    return parseInt(this.cs.get(scoreType) || '0');
+  }
 
   /**
    * Delays the execution of code for a specified amount of time.
