@@ -39,9 +39,12 @@ export class GameService {
    * @returns {void}
    */
   checkLocalScore(scoreType: string): number {
-    const localScore = parseInt(this.cs.get(scoreType) ?? '0');
-    this.cs.set(scoreType, localScore.toString());
-    return this.score += localScore;
+    const localScore = parseInt(this.cs.get(scoreType) || '0');
+    if (!isNaN(localScore)) {
+      this.score += localScore;
+      this.cs.set(scoreType, this.score.toString());
+    }
+    return this.score;
   }
 
   /**
