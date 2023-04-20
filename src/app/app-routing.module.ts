@@ -8,13 +8,13 @@ const routes: Routes = [
     loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule)
   },
   {
-    path: 'normal-game',
+    path: 'start-game',
     title: 'Start Game',
     loadChildren: () => import('./pages/normal/normal.module').then(m => m.NormalModule)
   },
 
   {
-    path: 'normal-game-results',
+    path: 'game-results',
     title: 'Game Results',
     loadChildren: () => import('./pages/results/results.module').then(m => m.ResultsModule)
   },
