@@ -23,11 +23,6 @@
         border: 1.6rem solid;
         background-size: 5rem;
     }
-
-    @media (min-width: 1200px) {
-        width: 14rem;
-        height: 14rem;
-    }
 }
 
 .board__btn--paper {
@@ -62,9 +57,4 @@
         width: 8rem;
         height: 8rem;
     }
-
-    // @media (min-width: 1200px) {
-    //     width: 10rem;
-    //     height: 10rem;
-    // }
 }
