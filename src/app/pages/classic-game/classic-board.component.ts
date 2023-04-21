@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-classic-board',
@@ -7,4 +9,14 @@ import { Component } from '@angular/core';
 })
 export class ClassicBoardComponent {
 
+  constructor(
+    private cs: CookieService,
+    private route: Router
+  ) { }
+
+
+  goToResults(playerMove: string) {
+    this.cs.set('userMove', playerMove);
+    this.route.navigateByUrl('/game/results')
+  }
 }

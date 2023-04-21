@@ -16,7 +16,12 @@ const routes: Routes = [
         path: 'lizard-spock',
         title: 'Rock-Paper-Scissors-Lizard-Spock | Play',
         loadChildren: () => import('../advanced-game/advanced-game.module').then(m => m.AdvancedGameModule)
-      }
+      },
+      {
+        path: 'results',
+        title: 'Rock-Paper-Scissors | Results',
+        loadChildren: () => import('../results/results.module').then(m => m.ResultsModule)
+      },
     ]
   }
 ];
