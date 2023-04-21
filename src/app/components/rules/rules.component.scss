@@ -6,6 +6,7 @@
     width: 100%;
     height: 100vh;
     top: 0;
+    right: 0;
     background-color: map-get($map: var.$colors-map, $key: "white");
     transition: all 1 ease;
     animation-duration: .5s;

@@ -7,13 +7,13 @@
     gap: 2rem;
 }
 
-// .main {
-//     gap: 1rem;
-// }
-
 .main__scores {
     @include mix.flex-box(column, wrap, center, center);
     gap: 1rem;
+}
+
+.main__score{
+    cursor: pointer;
 }
 
 .main__actions {

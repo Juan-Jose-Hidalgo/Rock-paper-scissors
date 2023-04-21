@@ -9,9 +9,9 @@
     <main class="main">
 
         <div class="main__scores">
-            <app-score [scoreValue]="getNormalScore" class="main__score" (click)="startGame('normal')"></app-score>
+            <app-score [scoreValue]="getNormalScore" class="main__score" (click)="startGame('classic')"></app-score>
             <app-score [scoreClass]="bonusClass" [scoreImage]="bonusImg" [scoreValue]="getAdvancedScore"
-                class="main__score" (click)="startGame('advanced')"></app-score>
+                class="main__score" (click)="startGame('lizard-spock')"></app-score>
         </div>
 
         <div class="main__actions">

@@ -8,14 +8,13 @@ const routes: Routes = [
     loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule)
   },
   {
-    path: 'start-game',
-    title: 'Start Game',
-    loadChildren: () => import('./pages/normal/normal.module').then(m => m.NormalModule)
+    path: 'game',
+    loadChildren: () => import('./pages/play/play.module').then(m => m.NormalModule)
   },
 
   {
     path: 'game-results',
-    title: 'Game Results',
+    title: 'Rock-Paper-Scissors | Results',
     loadChildren: () => import('./pages/results/results.module').then(m => m.ResultsModule)
   },
 
