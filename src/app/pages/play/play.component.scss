@@ -17,4 +17,41 @@
     grid-area: main;
     display: grid;
     grid-template-columns: 1fr;
+    grid-template-areas:
+        'main'
+        'rules';
+}
+
+.play__btn {
+    grid-area: main;
+}
+
+.play__btn {
+    grid-area: rules;
+    @include mix.flex-box(column, nowrap, center,center);
+}
+
+.rules {
+    @include mix.flex-box(column, nowrap, center, center);
+    width: 100%;
+}
+
+.rules__btn {
+    color: map-get($map: var.$colors-map, $key: "white");
+    border: 2px solid map-get($map: var.$colors-map, $key: "white");
+    border-radius: 5px;
+    padding: .8rem 2rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    cursor: pointer;
+    transition: all .5s ease;
+
+    &:hover {
+        color: map-get($map: var.$colors-map, $key: "background");
+        background-color: map-get($map: var.$colors-map, $key: "white");
+    }
+
+    @media (min-width: 1330px) {
+        align-self: flex-end;
+    }
 }

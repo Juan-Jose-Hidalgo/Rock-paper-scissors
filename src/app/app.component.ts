@@ -8,12 +8,4 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'Rock Paper Scissors';
   toogleModal = false;
-
-  openModal() {
-    this.toogleModal = true;
-  }
-
-  closeModal(event: boolean) {
-    this.toogleModal = event;
-  }
 }

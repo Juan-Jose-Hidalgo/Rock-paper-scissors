@@ -7,14 +7,17 @@
 
     <main class="play__main">
 
-        <section class="play__section">
+        <section class="play__section play__app">
             <app-normal-board *ngIf="gameMode === 'normal'"></app-normal-board>
         </section>
 
-        <section class="play__section">
-            Rules
+        <section class="play__section play__btn">
+            <button class="rules__btn" (click)="openModal()">Rules</button>
         </section>
 
     </main>
 
 </div>
+
+<!--* Modal rules -->
+<app-rules *ngIf="toogleModal" (onClose)="closeModal($event)"></app-rules>

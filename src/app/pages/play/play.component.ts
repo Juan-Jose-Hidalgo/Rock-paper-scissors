@@ -13,6 +13,7 @@ export class PlayComponent implements OnInit {
   public scoreClass = 'score__logo score__logo--bonus';
   public scoreValue = 0;
   public gameMode = 'normal';
+  public toogleModal = false;
 
   constructor(
     private route: Router,
@@ -51,6 +52,13 @@ export class PlayComponent implements OnInit {
       this.scoreClass = 'score__logo score__logo--bonus';
       this.scoreValue = this.getAdvancedScore;
     }
+  }
 
+  openModal() {
+    this.toogleModal = true;
+  }
+
+  closeModal(event: boolean) {
+    this.toogleModal = event;
   }
 }
