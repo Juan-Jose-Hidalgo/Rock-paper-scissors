@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { WinCondition } from '../models/win-condition.type';
 import { CookieService } from 'ngx-cookie-service';
 import { ScoreTable } from '../models/score-table.type';
+import { ModeConfig } from '../models/mode-config.type';
+import { Score } from '../models/score.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +17,19 @@ export class GameService {
     'you win': 1,
     'you lose': -1,
     draw: 0
+  };
+
+  private modeConfig: ModeConfig = {
+    classic: {
+      img: '/assets/img/logo.svg',
+      class: 'score__logo',
+      scoreValue: this.getNormalScore
+    },
+    'lizard-spock': {
+      img: '/assets/img/logo-bonus.svg',
+      class: 'score__logo score__logo--bonus',
+      scoreValue: this.getAdvancedScore
+    }
   };
 
   private winConditions: WinCondition = {
@@ -64,8 +79,19 @@ export class GameService {
   }
 
   //ToDo: Document this method.
-  getGameMode(){
+  getGameMode() {
     return this.cs.get('gameMode');
+  }
+
+  //ToDo: Document this method.
+  initScore(gameMode: string) {
+    const config = this.modeConfig[gameMode];
+    const score: Score = {
+      img: config.img,
+      class: config.class,
+      scoreValue: config.scoreValue
+    };
+    return score;
   }
 
   /**

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ModeConfig } from 'src/app/models/mode-config.type';
+import { Score } from 'src/app/models/score.interface';
 import { GameService } from 'src/app/services/game.service';
 
 @Component({
@@ -9,10 +11,8 @@ import { GameService } from 'src/app/services/game.service';
 })
 export class PlayComponent implements OnInit {
 
-  public scoreImg = '/assets/img/logo-bonus.svg';
-  public scoreClass = 'score__logo score__logo--bonus';
-  public scoreValue = 0;
   public gameMode = 'classic';
+  public score!: Score;
   public toogleModal = false;
 
   constructor(
@@ -30,11 +30,11 @@ export class PlayComponent implements OnInit {
 
   ngOnInit(): void {
     this.getGameMode();
+    this.initScore(this.gameMode);
   }
 
   getGameMode() {
     this.gameMode = this.gs.getGameMode();
-    this.initScore();
   }
 
   play(userMove: string) {
@@ -42,16 +42,8 @@ export class PlayComponent implements OnInit {
     this.route.navigateByUrl('/normal-game-results');
   }
 
-  initScore() {
-    if (this.gameMode === 'classic') {
-      this.scoreImg = '/assets/img/logo.svg';
-      this.scoreClass = 'score__logo';
-      this.scoreValue = this.getNormalScore;
-    } else if (this.gameMode === 'advanced') {
-      this.scoreImg = '/assets/img/logo-bonus.svg';
-      this.scoreClass = 'score__logo score__logo--bonus';
-      this.scoreValue = this.getAdvancedScore;
-    }
+  initScore(gameMode: string) {
+    this.score = this.gs.initScore(gameMode);
   }
 
   openModal() {
