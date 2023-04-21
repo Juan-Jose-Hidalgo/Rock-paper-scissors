@@ -11,13 +11,6 @@ const routes: Routes = [
     path: 'game',
     loadChildren: () => import('./pages/play/play.module').then(m => m.NormalModule)
   },
-
-  {
-    path: 'game-results',
-    title: 'Rock-Paper-Scissors | Results',
-    loadChildren: () => import('./pages/results/results.module').then(m => m.ResultsModule)
-  },
-
   { path: '**', redirectTo: 'home', pathMatch: 'full' },
 
 ];

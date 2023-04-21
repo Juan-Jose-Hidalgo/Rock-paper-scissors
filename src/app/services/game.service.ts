@@ -94,6 +94,7 @@ export class GameService {
     return score;
   }
 
+  //ToDo: delete method??
   /**
    * Stores the user's move selection in a cookie.
    * 
@@ -105,6 +106,7 @@ export class GameService {
     this.cs.set('userMove', userMove);
   }
 
+  //Todo:  Document this method.
   resetScore(scoreType: string) {
     this.cs.set(scoreType, '0');
   }

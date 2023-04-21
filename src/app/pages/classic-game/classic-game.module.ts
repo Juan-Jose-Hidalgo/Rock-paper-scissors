@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { ClassicGameRoutingModule } from './classic-game-routing.module';
 import { ClassicBoardComponent } from './classic-board.component';
+import { ComponentsModule } from 'src/app/components/components.module';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { ClassicBoardComponent } from './classic-board.component';
   ],
   imports: [
     CommonModule,
-    ClassicGameRoutingModule
+    ClassicGameRoutingModule,
+    ComponentsModule
   ]
 })
 export class ClassicGameModule { }
