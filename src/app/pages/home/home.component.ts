@@ -36,6 +36,6 @@ export class HomeComponent implements OnInit {
 
   startGame(gameMode: string) {
     this.cs.set('gameMode', gameMode);
-    this.route.navigateByUrl('/play-game');
+    this.route.navigateByUrl(`/game/${gameMode}`);
   }
 }

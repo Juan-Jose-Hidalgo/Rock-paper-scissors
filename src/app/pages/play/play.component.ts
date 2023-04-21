@@ -12,7 +12,7 @@ export class PlayComponent implements OnInit {
   public scoreImg = '/assets/img/logo-bonus.svg';
   public scoreClass = 'score__logo score__logo--bonus';
   public scoreValue = 0;
-  public gameMode = 'normal';
+  public gameMode = 'classic';
   public toogleModal = false;
 
   constructor(
@@ -29,7 +29,7 @@ export class PlayComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.getGameMode())
+    this.getGameMode();
   }
 
   getGameMode() {
@@ -43,11 +43,11 @@ export class PlayComponent implements OnInit {
   }
 
   initScore() {
-    if (this.gameMode === 'normal') {
+    if (this.gameMode === 'classic') {
       this.scoreImg = '/assets/img/logo.svg';
       this.scoreClass = 'score__logo';
       this.scoreValue = this.getNormalScore;
-    } else {
+    } else if (this.gameMode === 'advanced') {
       this.scoreImg = '/assets/img/logo-bonus.svg';
       this.scoreClass = 'score__logo score__logo--bonus';
       this.scoreValue = this.getAdvancedScore;

@@ -3,7 +3,22 @@ import { RouterModule, Routes } from '@angular/router';
 import { PlayComponent } from './play.component';
 
 const routes: Routes = [
-  { path: '', component: PlayComponent }
+  {
+    path: '',
+    component: PlayComponent,
+    children: [
+      {
+        path: 'classic',
+        title: 'Rock-Paper-Scissors | Play',
+        loadChildren: () => import('../classic-game/classic-game.module').then(m => m.ClassicGameModule)
+      },
+      {
+        path: 'lizard-spock',
+        title: 'Rock-Paper-Scissors-Lizard-Spock | Play',
+        loadChildren: () => import('../advanced-game/advanced-game.module').then(m => m.AdvancedGameModule)
+      }
+    ]
+  }
 ];
 
 @NgModule({

@@ -8,8 +8,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule)
   },
   {
-    path: 'play-game',
-    title: 'Rock-Paper-Scissors | Play',
+    path: 'game',
     loadChildren: () => import('./pages/play/play.module').then(m => m.NormalModule)
   },
 
