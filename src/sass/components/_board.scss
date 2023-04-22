@@ -1,8 +1,11 @@
 .board {
     position: relative;
-    width: 20rem;
     margin: 0 auto;
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
     background-position: top;
+
+    @media (orientation:landscape) {
+        margin: 4.5rem auto;
+    }
 }
