@@ -11,7 +11,6 @@ import { GameService } from 'src/app/services/game.service';
 })
 export class HomeComponent implements OnInit {
   public bonusImg = '/assets/img/logo-bonus.svg';
-  public bonusClass = 'score__logo score__logo--bonus';
 
   constructor(
     private cs: CookieService,
