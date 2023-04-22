@@ -9,6 +9,4 @@ export class ScoreComponent {
 
   @Input() scoreValue = 0;
   @Input() scoreImage = '/assets/img/logo.svg'
-  @Input() scoreClass = 'score__logo'
-
 }
