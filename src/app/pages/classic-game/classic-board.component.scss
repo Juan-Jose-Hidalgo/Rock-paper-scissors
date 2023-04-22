@@ -1,46 +1,41 @@
 .board--classic {
-    height: 9rem;
-    margin: 0 auto;
+    height: 9.375rem;
+    width: 9.375rem;
     background-image: url('/assets/img/bg-triangle.svg');
 
-    @media (orientation:landscape) {
-        margin: 4rem auto;
-    }
-
     @media (min-width:768px) {
-        width: 30rem;
-        height: 20rem;
-    }
-
-    @media (min-width:1200px) {
-        width: 34rem;
+        width: 15.625rem;
+        height: 15.625rem;
     }
 }
 
 .board__paper {
     position: absolute;
-    left: 1.5625rem;
-    top: -3.125rem;
+    left: -25%;
+    top: -15%;
 
-    @media (min-width:1330px) {
-        left: 2.8125rem;
+    @media (min-width:768px){
+        left: -15%;
     }
-
 }
 
 .board__scissors {
     position: absolute;
-    right: 1.5625rem;
-    top: -3.125rem;
+    right: -25%;
+    top: -15%;
 
-    @media (min-width:1330px) {
-        right: 2.8125rem;
+    @media (min-width:768px){
+        right: -15%;
     }
 }
 
 .board__rock {
     position: absolute;
-    bottom: -2.1875rem;
+    bottom: -20%;
     left: 50%;
     transform: translateX(-50%);
+
+    @media (min-width:768px){
+        bottom: .5rem;
+    }
 }
