@@ -38,13 +38,13 @@ export class ResultsComponent implements OnInit {
     this.calculateResult();
   }
 
-  get advancedGameScore() {
-    return this.gameService.getAdvancedScore;
-  }
+  // get advancedGameScore() {
+  //   return this.gameService.getAdvancedScore;
+  // }
 
-  get normalGameScore() {
-    return this.gameService.getNormalScore;
-  }
+  // get normalGameScore() {
+  //   return this.gameService.getNormalScore;
+  // }
 
   /**
    * Calculates the result of the game and assigns it to the 'result' property.
@@ -54,10 +54,10 @@ export class ResultsComponent implements OnInit {
    * @returns {Promise<void>} A Promise that resolves when the result and CPU move have been calculated and assigned.
    */
   async calculateResult(): Promise<void> {
-    //Get cpu move
+    //Get cpu move.
     this.cpuMove = await this.gameService.cpuMove(this.gameOptions.moves);
 
-    //Calculate the result of the game
+    //Calculate the result of the game.
     this.result = this.gameService.setGame(this.userMove, this.cpuMove, this.gameOptions.scoreType);
   }
 

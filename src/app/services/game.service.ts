@@ -49,7 +49,7 @@ export class GameService {
 
     if (!isNaN(localScore)) {
       this.normalScore = localScore;
-      this.cs.set('normalGameScore', this.normalScore.toString());
+      this.cs.set('normalGameScore', this.normalScore.toString(), undefined, '/');
     }
 
     return this.normalScore;
@@ -60,7 +60,7 @@ export class GameService {
 
     if (!isNaN(localScore)) {
       this.advancedScore = localScore;
-      this.cs.set('advancedGameScore', this.advancedScore.toString());
+      this.cs.set('advancedGameScore', this.advancedScore.toString(), undefined, '/');
     }
 
     return this.advancedScore;
@@ -91,7 +91,6 @@ export class GameService {
     const score: Score = {
       img: config.img,
       class: config.class,
-      scoreValue: config.scoreValue
     };
     return score;
   }
@@ -105,12 +104,12 @@ export class GameService {
    * @returns {void}
    */
   play(userMove: string): void {
-    this.cs.set('userMove', userMove);
+    this.cs.set('userMove', userMove, undefined, '/');
   }
 
   //Todo:  Document this method.
   resetScore(scoreType: string): void {
-    this.cs.set(scoreType, '0');
+    this.cs.set(scoreType, '0', undefined, '/');
   }
 
   /**
@@ -140,7 +139,7 @@ export class GameService {
     else this.advancedScore = newScore;
 
     //Sets the new score in the cookie.
-    this.cs.set(scoreType, newScore.toString());
+    this.cs.set(scoreType, newScore.toString(), undefined, '/');
   };
 
   /**

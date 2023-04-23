@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { ModeConfig } from 'src/app/models/mode-config.type';
 import { Score } from 'src/app/models/score.interface';
 import { GameService } from 'src/app/services/game.service';
@@ -14,8 +15,10 @@ export class PlayComponent implements OnInit {
   public gameMode = 'classic';
   public score!: Score;
   public toogleModal = false;
+  public scoreValue = 0;
 
   constructor(
+    private cs:CookieService,
     private route: Router,
     private gs: GameService
   ) { }
@@ -29,12 +32,8 @@ export class PlayComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getGameMode();
+    this.gameMode = this.cs.get('gameMode');
     this.initScore(this.gameMode);
-  }
-
-  getGameMode() {
-    this.gameMode = this.gs.getGameMode();
   }
 
   play(userMove: string) {

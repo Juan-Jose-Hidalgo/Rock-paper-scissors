@@ -16,7 +16,7 @@ export class AdvancedGameComponent {
 
 
   goToResults(playerMove: string) {
-    this.cs.set('userMove', playerMove);
+    this.cs.set('userMove', playerMove, undefined, '/');
     this.route.navigateByUrl('/game/results')
   }
 

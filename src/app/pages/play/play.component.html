@@ -1,7 +1,8 @@
 <div class="play">
 
     <header class="play__header">
-        <app-score [scoreImage]="score.img" [scoreValue]="score.scoreValue"></app-score>
+        <app-score [scoreImage]="score.img"
+            [scoreValue]="gameMode === 'classic' ? getNormalScore : getAdvancedScore"></app-score>
     </header>
 
 
