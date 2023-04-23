@@ -33,9 +33,11 @@ export class GameService {
   };
 
   private winConditions: WinCondition = {
-    rock: ['scissors'],
-    paper: ['rock'],
-    scissors: ['paper']
+    rock: ['scissors', 'lizard'],
+    paper: ['rock', 'spock'],
+    scissors: ['paper', 'lizard'],
+    lizard: ['spock', 'paper'],
+    spock: ['scissors', 'rock']
   }
 
   constructor(
@@ -47,7 +49,7 @@ export class GameService {
 
     if (!isNaN(localScore)) {
       this.normalScore = localScore;
-      this.cs.set('normalGameScore', this.normalScore.toString());
+      this.cs.set('normalGameScore', this.normalScore.toString(), undefined, '/');
     }
 
     return this.normalScore;
@@ -58,7 +60,7 @@ export class GameService {
 
     if (!isNaN(localScore)) {
       this.advancedScore = localScore;
-      this.cs.set('advancedGameScore', this.advancedScore.toString());
+      this.cs.set('advancedGameScore', this.advancedScore.toString(), undefined, '/');
     }
 
     return this.advancedScore;
@@ -89,7 +91,6 @@ export class GameService {
     const score: Score = {
       img: config.img,
       class: config.class,
-      scoreValue: config.scoreValue
     };
     return score;
   }
@@ -103,12 +104,12 @@ export class GameService {
    * @returns {void}
    */
   play(userMove: string): void {
-    this.cs.set('userMove', userMove);
+    this.cs.set('userMove', userMove, undefined, '/');
   }
 
   //Todo:  Document this method.
-  resetScore(scoreType: string) {
-    this.cs.set(scoreType, '0');
+  resetScore(scoreType: string): void {
+    this.cs.set(scoreType, '0', undefined, '/');
   }
 
   /**
@@ -125,21 +126,20 @@ export class GameService {
     return result;
   }
 
-  /**
-   * Updates the score according to the result of the game and the specified score type.
-   * @memberof GameService
-   * @param result - The result of the game ('you win', 'you lose', or 'draw').
-   * @param scoreType - The type of score to update ('localScore' or 'globalScore').
-   * @returns void
-   */
-  updateScore(result: string, scoreType: string) {
+  //ToDo: Document this method.
+  updateScore(result: string, scoreType: string): void {
     //Gets the current score from the cookie.
     const currentScore = parseInt(this.cs.get(scoreType) ?? '0');
 
-    //Calculates the new score and updates the score attribute.
+    //Calculates the new score.
     const newScore = this.calculateNewScore(result, currentScore);
-    this.normalScore = newScore;
-    this.cs.set(scoreType, newScore.toString());
+
+    //Update gameScore atributte.
+    if (scoreType === 'normalGameScore') this.normalScore = newScore;
+    else this.advancedScore = newScore;
+
+    //Sets the new score in the cookie.
+    this.cs.set(scoreType, newScore.toString(), undefined, '/');
   };
 
   /**
@@ -157,7 +157,7 @@ export class GameService {
   }
 
   /**
-   * Calculates the new score based on the game result and the current score.
+   * Calculates the new score based on the game result and the new score.
    * 
    * @private
    * @memberof GameService
