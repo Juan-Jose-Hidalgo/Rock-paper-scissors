@@ -10,6 +10,8 @@ import { GameService } from 'src/app/services/game.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+
+  public acceptCookies = false;
   public bonusImg = '/assets/img/logo-bonus.svg';
 
   constructor(
@@ -27,6 +29,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.checkCookies();
   }
 
   resetScore(scoreType: string) {
@@ -37,4 +40,13 @@ export class HomeComponent implements OnInit {
     this.cs.set('gameMode', gameMode, undefined, '/');
     this.route.navigateByUrl(`/game/${gameMode}`);
   }
+
+  checkCookies() {
+    this.acceptCookies = this.cs.check('acceptCookies');
+  }
+
+  acceptCookiesHandler(event: boolean) {
+    this.acceptCookies = event;
+  }
 }
+

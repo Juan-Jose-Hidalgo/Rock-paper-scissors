@@ -1,0 +1,69 @@
+@use "mixins" as mix;
+@use "variables" as var;
+
+.accept-cookies__container {
+    width: 90%;
+    margin: 0 auto;
+    background-color: rgb(11, 2, 41);
+    color: map-get($map: var.$colors-map, $key: "white");
+    box-shadow: 4px 4px 3px hsl(240, 47%, 14%);
+    padding: 1rem;
+    border-radius: 5px;
+    display: grid;
+    grid-template-areas:
+        'text'
+        'link'
+        'btn';
+    gap: .5rem;
+    animation-name: rules-show;
+    animation-duration: .3s;
+
+    @media (min-width: 768px) {
+        grid-template-areas:
+            'text btn'
+            'link btn';
+        width: 35rem;
+    }
+
+    @media (min-width: 1200px) {
+        width: 50rem;
+    }
+}
+
+.accept-cookies__text {
+    grid-area: text;
+}
+
+.accept-cookies__policy {
+    grid-area: link;
+    color: map-get($map: var.$colors-map, $key: "rock");
+
+    @media (min-width: 768px) {
+        width: 70%;
+    }
+}
+
+.accept-cookies__btn {
+    grid-area: btn;
+    width: 100%;
+    background-color: map-get($map: var.$colors-map, $key: "scissors");
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all .3s ease;
+
+    &:hover {
+        background-color: map-get($map: var.$colors-map, $key: "scissors-2");
+    }
+
+    @media (min-width:768px) {
+        width: 70%;
+        justify-self: end;
+    }
+
+    @media (min-width: 1330px) {
+        width: 50%;
+    }
+}

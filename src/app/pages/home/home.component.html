@@ -10,8 +10,8 @@
 
         <div class="main__scores">
             <app-score [scoreValue]="getNormalScore" class="main__score" (click)="startGame('classic')"></app-score>
-            <app-score [scoreImage]="bonusImg" [scoreValue]="getAdvancedScore"
-                class="main__score" (click)="startGame('lizard-spock')"></app-score>
+            <app-score [scoreImage]="bonusImg" [scoreValue]="getAdvancedScore" class="main__score"
+                (click)="startGame('lizard-spock')"></app-score>
         </div>
 
         <div class="main__actions">
@@ -21,3 +21,6 @@
     </main>
 
 </div>
+
+<app-accept-cookies *ngIf="!acceptCookies" class="accept-cookies"
+    (cookies)="acceptCookiesHandler($event)"></app-accept-cookies>

@@ -7,11 +7,20 @@
     text-align: center;
     text-transform: uppercase;
 
-    @media (min-width: 768px){
+    @media (min-width: 768px) {
         font-size: 3rem;
     }
 
-    @media (min-width:1330px){
+    @media (min-width:1330px) {
         font-size: 3.5rem;
+    }
+}
+
+.small-text {
+    color: map-get($map: var.$colors-map, $key: "white");
+    font-size: .7rem;
+
+    @media (min-width:768px) {
+        font-size: .8rem;
     }
 }
