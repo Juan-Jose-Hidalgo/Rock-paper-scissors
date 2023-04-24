@@ -14,8 +14,14 @@ export class AdvancedGameComponent {
     private route: Router
   ) { }
 
-
-  goToResults(playerMove: string) {
+  /**
+   * Saves the user's move and navigates to the game results page.
+   *
+   * @memberof AdvancedGameComponent
+   * @param playerMove The move selected by the player.
+   * @returns {void}
+   */
+  goToResults(playerMove: string): void {
     this.cs.set('userMove', playerMove, undefined, '/');
     this.route.navigateByUrl('/game/results')
   }

@@ -44,7 +44,15 @@ export class GameService {
     private cs: CookieService
   ) { }
 
-  get getNormalScore() {
+  /**
+   * Getter to obtain the normal game score.
+   * It checks if there is a local score and returns it, otherwise returns the default value.
+   * It also updates the local score with the default value.
+   * 
+   * @memberof GameService
+   * @returns {number} The normal game score.
+   */
+  get getNormalScore(): number {
     const localScore = this.checkLocalScore('normalGameScore');
 
     if (!isNaN(localScore)) {
@@ -55,7 +63,12 @@ export class GameService {
     return this.normalScore;
   }
 
-  get getAdvancedScore() {
+  /**
+   * Returns the advanced game score. If the score is not set in the local storage, it will be initialized to 0.
+   * 
+   * @returns {number} The advanced game score.
+   */
+  get getAdvancedScore(): number {
     const localScore = this.checkLocalScore('advancedGameScore');
 
     if (!isNaN(localScore)) {
@@ -80,13 +93,14 @@ export class GameService {
     return options[randomNumber];
   }
 
-  //ToDo: Document this method.
-  getGameMode() {
-    return this.cs.get('gameMode');
-  }
-
-  //ToDo: Document this method.
-  initScore(gameMode: string) {
+  /**
+   * Initializes a new score object for the given game mode.
+   * 
+   * @memberof GameService
+   * @param {string} gameMode - The selected game mode.
+   * @returns {Score} - A score object containing the image and class for the given game mode.
+   */
+  initScore(gameMode: string): Score {
     const config = this.modeConfig[gameMode];
     const score: Score = {
       img: config.img,
@@ -95,19 +109,13 @@ export class GameService {
     return score;
   }
 
-  //ToDo: delete method??
   /**
-   * Stores the user's move selection in a cookie.
+   * Resets the score of the specified type to 0.
    * 
    * @memberof GameService
-   * @param userMove - The user's move selection
+   * @param scoreType - The type of score to reset.
    * @returns {void}
    */
-  play(userMove: string): void {
-    this.cs.set('userMove', userMove, undefined, '/');
-  }
-
-  //Todo:  Document this method.
   resetScore(scoreType: string): void {
     this.cs.set(scoreType, '0', undefined, '/');
   }
@@ -126,7 +134,16 @@ export class GameService {
     return result;
   }
 
-  //ToDo: Document this method.
+  /**
+   * Updates the game score according to the result of a game round and the type of the score.
+   * 
+   * @memberof GameService
+   * @param result - A string representing the result of a game round (win, lose, tie).
+   * @param scoreType - A string representing the type of the score (normalGameScore, advancedGameScore).
+   * @returns {void}
+   * @remarks This method updates the game score and saves it in a cookie using the CookieService.
+   * @requires CookieService to be injected.
+   */
   updateScore(result: string, scoreType: string): void {
     //Gets the current score from the cookie.
     const currentScore = parseInt(this.cs.get(scoreType) ?? '0');
@@ -170,7 +187,17 @@ export class GameService {
     return currentScore + scoreChange;
   };
 
-  //ToDo: document method
+  /**
+   * Checks the local score for a given score type.
+   * 
+   * @param scoreType - The score type to check.
+   * @returns The local score for the given score type.
+   * @private
+   * @memberof GameService 
+   * @requires CookieService to be injected.
+   * @requires cs to be an instance of CookieService.
+   * @returns {number}
+   */
   private checkLocalScore(scoreType: string): number {
     return parseInt(this.cs.get(scoreType) || '0');
   }

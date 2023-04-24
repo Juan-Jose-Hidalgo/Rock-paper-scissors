@@ -18,7 +18,14 @@ export class AcceptCookiesComponent {
 
   @ViewChild('acceptCookies') acceptCookies!: ElementRef;
 
-  acceptCookiesHandle() {
+  /**
+   * Setss the 'acceptCookies' cookie to 'true' and emits a boolean value of 'true'
+   * through the 'cookies' event.
+   * 
+   * @memberof AcceptCookiesComponent
+   * @returns {void}
+   */
+  acceptCookiesHandle(): void {
     this.cs.set('acceptCookies', 'true', undefined, '/');
     this.cookies.emit(true);
   }

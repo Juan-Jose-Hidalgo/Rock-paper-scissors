@@ -38,14 +38,6 @@ export class ResultsComponent implements OnInit {
     this.calculateResult();
   }
 
-  // get advancedGameScore() {
-  //   return this.gameService.getAdvancedScore;
-  // }
-
-  // get normalGameScore() {
-  //   return this.gameService.getNormalScore;
-  // }
-
   /**
    * Calculates the result of the game and assigns it to the 'result' property.
    * Sets the CPU move to the 'cpuMove' property.
@@ -61,7 +53,13 @@ export class ResultsComponent implements OnInit {
     this.result = this.gameService.setGame(this.userMove, this.cpuMove, this.gameOptions.scoreType);
   }
 
-  //ToDo: Document this method.
+  /**
+   * Retrieves the game options from cookies and sets them in the component.
+   * If the game mode is "lizard-spock", the advanced options are used. Otherwise, the classic options are used.
+   * 
+   * @memberof ResultsComponent
+   * @returns {void}
+   */
   getGameOptions(): void {
     this.gameMode = this.cookieService.get('gameMode');
     this.gameOptions = this.gameMode === 'lizard-spock' ? this.options.advancedOptions : this.options.classicOptions;
