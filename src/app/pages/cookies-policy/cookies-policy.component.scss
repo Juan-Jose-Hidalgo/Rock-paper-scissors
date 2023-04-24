@@ -1,39 +1,28 @@
 @use "mixins" as mix;
 @use "variables" as var;
 
-.home,
-.main {
-    @include mix.flex-box(column, wrap, space-between, center);
-    gap: 2rem;
-}
-
-.main__scores {
-    @include mix.flex-box(column, wrap, center, center);
+.cookies-policy,
+.cookies-policy__ul {
+    @include mix.flex-box(column, nowrap, center, flex-start);
     gap: 1rem;
 }
 
-.main__score{
-    cursor: pointer;
-}
+.heading-1 {
+    align-self: center;
 
-.main__actions {
-    @include mix.flex-box(column, wrap, center, center);
-    gap: .5rem;
-    width: 100%;
-
-    @media (min-width:1330px) {
-        flex-direction: row;
-        justify-content: space-around;
+    @media (min-width: 768px) {
+        margin-bottom: 3rem;
     }
 }
 
-.main__btn {
+.cookies-policy__btn {
     width: 100%;
     padding: .8rem 0;
     border: 2px solid map-get($map: var.$colors-map, $key: "header-outline");
     border-radius: 5px;
     color: map-get($map: var.$colors-map, $key: "white");
     text-transform: uppercase;
+    text-align: center;
     font-weight: 700;
     transition: all .3s ease;
     cursor: pointer;
@@ -46,13 +35,8 @@
 
     @media (min-width:1330px) {
         width: auto;
-        padding: 1.6rem;
+        padding: 1rem 1.5rem;
+        align-self: start;
+        margin-top: 1rem;
     }
-}
-
-.accept-cookies{
-    width: 100%;
-    position: absolute;
-    top: 1rem;
-    left: 0;
 }

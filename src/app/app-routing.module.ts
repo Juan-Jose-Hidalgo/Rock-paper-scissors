@@ -11,6 +11,11 @@ const routes: Routes = [
     path: 'game',
     loadChildren: () => import('./pages/play/play.module').then(m => m.NormalModule)
   },
+  {
+    path: 'cookies-policy',
+    title: 'Rock-Paper-Scissors | Cookies Policy',
+    loadChildren: () => import('./pages/cookies-policy/cookies-policy.module').then(m => m.CookiesPolicyModule)
+  },
   { path: '**', redirectTo: 'home', pathMatch: 'full' },
 
 ];
