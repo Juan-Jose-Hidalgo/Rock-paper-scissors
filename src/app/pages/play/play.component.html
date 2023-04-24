@@ -21,4 +21,4 @@
 </div>
 
 <!--* Modal rules -->
-<app-rules *ngIf="toogleModal" (onClose)="closeModal($event)"></app-rules>
+<app-rules *ngIf="toogleModal" [rulesImageUrl]="rulesImg" (onClose)="closeModal($event)"></app-rules>

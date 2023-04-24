@@ -28,11 +28,13 @@ Users should be able to:
 
 ### Screenshots
 
-![Start Game](./docs/img/Start%20Game.png)
+![HomeImg](./docs/img/home.png)
 
-![Results](./docs/img/Game%20Results.png)
+![ClassicGame](./docs/img/normalPlay.png)
 
-![Rules](./docs/img/Start%20Game%20(1).png)
+![BonusGame](./docs/img/bonusPlay.png)
+
+![Results](./docs/img/results.png)
 
 ### Links
 

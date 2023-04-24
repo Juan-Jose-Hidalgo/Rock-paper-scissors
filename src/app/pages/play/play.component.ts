@@ -16,6 +16,7 @@ export class PlayComponent implements OnInit {
   public score!: Score;
   public toogleModal = false;
   public scoreValue = 0;
+  public rulesImg = '/assets/img/image-rules.svg'
 
   constructor(
     private cs: CookieService,
@@ -34,6 +35,7 @@ export class PlayComponent implements OnInit {
   ngOnInit(): void {
     this.gameMode = this.cs.get('gameMode');
     this.initScore(this.gameMode);
+    this.setImageRules();
   }
 
   /**
@@ -66,5 +68,9 @@ export class PlayComponent implements OnInit {
 
   closeModal(event: boolean) {
     this.toogleModal = event;
+  }
+
+  setImageRules() {
+    this.rulesImg = this.gameMode === 'classic' ? '/assets/img/image-rules.svg' : '/assets/img/image-rules-bonus.svg';
   }
 }

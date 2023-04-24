@@ -28,11 +28,13 @@ Los usuarios deben ser capaces de:
 
 ### Capturas de pantalla
 
-![Start Game](./img/Start%20Game.png)
+![HomeImg](./img/home.png)
 
-![Results](./img/Game%20Results.png)
+![ClassicGame](./img/normalPlay.png)
 
-![Rules](./img/Start%20Game%20(1).png)
+![BonusGame](./img/bonusPlay.png)
+
+![Results](./img/results.png)
 
 ### Enlaces
 
