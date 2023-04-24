@@ -39,7 +39,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [GitHub](https://github.com/Juan-Jose-Hidalgo/Rock-paper-scissors)
-- Live Site URL: cooming soon
+- [Live Site](https://rock-paper-scissors.jjhidalgo.com)
 
 ## 🔨 Built with
 
