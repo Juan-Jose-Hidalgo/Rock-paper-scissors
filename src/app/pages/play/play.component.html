@@ -1,0 +1,24 @@
+<div class="play">
+
+    <header class="play__header">
+        <app-score [scoreImage]="score.img"
+            [scoreValue]="gameMode === 'classic' ? getNormalScore : getAdvancedScore"></app-score>
+    </header>
+
+
+    <main class="play__main">
+
+        <section class="play__section play__app">
+            <router-outlet></router-outlet>
+        </section>
+
+        <section class="play__section play__btn">
+            <button class="rules__btn" (click)="openModal()">Rules</button>
+        </section>
+
+    </main>
+
+</div>
+
+<!--* Modal rules -->
+<app-rules *ngIf="toogleModal" [rulesImageUrl]="rulesImg" (onClose)="closeModal($event)"></app-rules>

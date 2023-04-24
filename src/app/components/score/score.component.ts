@@ -7,6 +7,6 @@ import { Component, Input } from '@angular/core';
 })
 export class ScoreComponent {
 
-  @Input() score = 0;
-
+  @Input() scoreValue = 0;
+  @Input() scoreImage = '/assets/img/logo.svg'
 }

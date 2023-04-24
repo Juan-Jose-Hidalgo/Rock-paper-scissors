@@ -19,7 +19,7 @@
     @media (min-width: 1300px) {
         width: 90%;
         max-width: 1330px;
-        grid-template-columns: 1fr auto 1fr;
+        grid-template-columns: repeat(3, 1fr);
         grid-template-rows: 1fr;
         grid-template-areas: 'user result cpu';
         row-gap: 0;
@@ -77,7 +77,7 @@
     color: map-get($map: var.$colors-map, $key: "white");
     text-transform: uppercase;
 
-    @media (min-width:1330px){
+    @media (min-width:1330px) {
         font-size: 1.5rem;
         order: 1;
     }
@@ -87,7 +87,6 @@
     @include mix.flex-box(column, nowrap, center, center);
     gap: 1rem;
     grid-area: result;
-    justify-self: center;
 }
 
 .results__h2 {
@@ -106,7 +105,7 @@
     text-transform: uppercase;
     transition: all .3s ease;
 
-    &:hover{
+    &:hover {
         color: map-get($map: var.$colors-map, $key: "rock");
     }
 }

@@ -1,0 +1,41 @@
+.board--classic {
+    height: 9.375rem;
+    width: 9.375rem;
+    background-image: url('/assets/img/bg-triangle.svg');
+
+    @media (min-width:768px) {
+        width: 15.625rem;
+        height: 15.625rem;
+    }
+}
+
+.board__paper {
+    position: absolute;
+    left: -25%;
+    top: -15%;
+
+    @media (min-width:768px){
+        left: -15%;
+    }
+}
+
+.board__scissors {
+    position: absolute;
+    right: -25%;
+    top: -15%;
+
+    @media (min-width:768px){
+        right: -15%;
+    }
+}
+
+.board__rock {
+    position: absolute;
+    bottom: -20%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    @media (min-width:768px){
+        bottom: .5rem;
+    }
+}

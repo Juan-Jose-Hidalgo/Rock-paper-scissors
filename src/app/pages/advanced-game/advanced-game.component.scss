@@ -1,0 +1,53 @@
+.board--advanced {
+    height: 12.5rem;
+    width: 12.5rem;
+    background-image: url('/assets/img/bg-pentagon.svg');
+   
+    @media (min-width:768px) {
+        height: 18.75rem;
+        width: 18.75rem;
+    }
+}
+
+.board__paper {
+    position: absolute;
+    left: 75%;
+    top: 10%;
+
+    @media (min-width:768px) {
+        top: 18%;
+    }
+}
+
+.board__scissors {
+    position: absolute;
+    top: -27%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    @media (min-width:768px) {
+        top: -20%;
+    }
+}
+
+.board__rock {
+    position: absolute;
+    bottom: -18%;
+    left: 60%;
+}
+
+.board__lizard {
+    position: absolute;
+    bottom: -18%;
+    right: 60%;
+}
+
+.board__spock {
+    position: absolute;
+    right: 75%;
+    top: 10%;
+
+    @media (min-width:768px) {
+        top: 18%;
+    }
+}

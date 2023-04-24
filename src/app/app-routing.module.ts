@@ -1,20 +1,24 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CookieGuard } from './guards/cookie.guard';
 
 const routes: Routes = [
   {
-    path: 'normal-game',
-    title: 'Start Game',
-    loadChildren: () => import('./pages/normal/normal.module').then(m => m.NormalModule)
+    path: 'home',
+    title: 'Rock-Paper-Scissors | Home',
+    loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule)
   },
-
   {
-    path: 'normal-game-results',
-    title: 'Game Results',
-    loadChildren: () => import('./pages/results/results.module').then(m => m.ResultsModule)
+    path: 'game',
+    canActivate: [CookieGuard],
+    loadChildren: () => import('./pages/play/play.module').then(m => m.NormalModule)
   },
-
-  { path: '**', redirectTo: 'normal-game', pathMatch: 'full' },
+  {
+    path: 'cookies-policy',
+    title: 'Rock-Paper-Scissors | Cookies Policy',
+    loadChildren: () => import('./pages/cookies-policy/cookies-policy.module').then(m => m.CookiesPolicyModule)
+  },
+  { path: '**', redirectTo: 'home', pathMatch: 'full' },
 
 ];
 

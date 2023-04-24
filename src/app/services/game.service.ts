@@ -2,13 +2,16 @@ import { Injectable } from '@angular/core';
 import { WinCondition } from '../models/win-condition.type';
 import { CookieService } from 'ngx-cookie-service';
 import { ScoreTable } from '../models/score-table.type';
+import { ModeConfig } from '../models/mode-config.type';
+import { Score } from '../models/score.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GameService {
 
-  private score = 0;
+  private normalScore = 0;
+  private advancedScore = 0;
 
   private scoreTable: ScoreTable = {
     'you win': 1,
@@ -16,35 +19,74 @@ export class GameService {
     draw: 0
   };
 
+  private modeConfig: ModeConfig = {
+    classic: {
+      img: '/assets/img/logo.svg',
+      class: 'score__logo',
+      scoreValue: this.getNormalScore
+    },
+    'lizard-spock': {
+      img: '/assets/img/logo-bonus.svg',
+      class: 'score__logo score__logo--bonus',
+      scoreValue: this.getAdvancedScore
+    }
+  };
+
   private winConditions: WinCondition = {
-    rock: ['scissors'],
-    paper: ['rock'],
-    scissors: ['paper']
+    rock: ['scissors', 'lizard'],
+    paper: ['rock', 'spock'],
+    scissors: ['paper', 'lizard'],
+    lizard: ['spock', 'paper'],
+    spock: ['scissors', 'rock']
   }
 
   constructor(
     private cs: CookieService
   ) { }
 
-  get getScore() {
-    return this.score;
+  /**
+   * Getter to obtain the normal game score.
+   * It checks if there is a local score and returns it, otherwise returns the default value.
+   * It also updates the local score with the default value.
+   * 
+   * @memberof GameService
+   * @returns {number} The normal game score.
+   */
+  get getNormalScore(): number {
+    const localScore = this.checkLocalScore('normalGameScore');
+
+    if (!isNaN(localScore)) {
+      this.normalScore = localScore;
+      this.cs.set('normalGameScore', this.normalScore.toString(), undefined, '/');
+    }
+
+    return this.normalScore;
   }
 
   /**
-   * Checks the local score stored in the cookie and sets it to this.score attribute.
-   * If the score is not found in the cookie, it sets the score to 0.
+   * Returns the advanced game score. If the score is not set in the local storage, it will be initialized to 0.
+   * 
+   * @returns {number} The advanced game score.
+   */
+  get getAdvancedScore(): number {
+    const localScore = this.checkLocalScore('advancedGameScore');
+
+    if (!isNaN(localScore)) {
+      this.advancedScore = localScore;
+      this.cs.set('advancedGameScore', this.advancedScore.toString(), undefined, '/');
+    }
+
+    return this.advancedScore;
+  }
+
+  /**
+   * Checks if the acceptCookies exists.
    * 
    * @memberof GameService
-   * @param {string} type - The type of score to check ('user' or 'cpu').
-   * @returns {void}
+   * @returns {boolean}
    */
-  checkLocalScore(scoreType: string): number {
-    const localScore = parseInt(this.cs.get(scoreType) || '0');
-    if (!isNaN(localScore)) {
-      this.score += localScore;
-      this.cs.set(scoreType, this.score.toString());
-    }
-    return this.score;
+  checkAcceptCookies(): boolean{
+    return this.cs.check('acceptCookies');
   }
 
   /**
@@ -62,14 +104,30 @@ export class GameService {
   }
 
   /**
-   * Stores the user's move selection in a cookie.
+   * Initializes a new score object for the given game mode.
    * 
    * @memberof GameService
-   * @param userMove - The user's move selection
+   * @param {string} gameMode - The selected game mode.
+   * @returns {Score} - A score object containing the image and class for the given game mode.
+   */
+  initScore(gameMode: string): Score {
+    const config = this.modeConfig[gameMode];
+    const score: Score = {
+      img: config.img,
+      class: config.class,
+    };
+    return score;
+  }
+
+  /**
+   * Resets the score of the specified type to 0.
+   * 
+   * @memberof GameService
+   * @param scoreType - The type of score to reset.
    * @returns {void}
    */
-  play(userMove: string): void {
-    this.cs.set('userMove', userMove);
+  resetScore(scoreType: string): void {
+    this.cs.set(scoreType, '0', undefined, '/');
   }
 
   /**
@@ -87,20 +145,28 @@ export class GameService {
   }
 
   /**
-   * Updates the score according to the result of the game and the specified score type.
+   * Updates the game score according to the result of a game round and the type of the score.
+   * 
    * @memberof GameService
-   * @param result - The result of the game ('you win', 'you lose', or 'draw').
-   * @param scoreType - The type of score to update ('localScore' or 'globalScore').
-   * @returns void
+   * @param result - A string representing the result of a game round (win, lose, tie).
+   * @param scoreType - A string representing the type of the score (normalGameScore, advancedGameScore).
+   * @returns {void}
+   * @remarks This method updates the game score and saves it in a cookie using the CookieService.
+   * @requires CookieService to be injected.
    */
-  updateScore(result: string, scoreType: string) {
+  updateScore(result: string, scoreType: string): void {
     //Gets the current score from the cookie.
     const currentScore = parseInt(this.cs.get(scoreType) ?? '0');
 
-    //Calculates the new score and updates the score attribute.
+    //Calculates the new score.
     const newScore = this.calculateNewScore(result, currentScore);
-    this.score = newScore;
-    this.cs.set(scoreType, newScore.toString());
+
+    //Update gameScore atributte.
+    if (scoreType === 'normalGameScore') this.normalScore = newScore;
+    else this.advancedScore = newScore;
+
+    //Sets the new score in the cookie.
+    this.cs.set(scoreType, newScore.toString(), undefined, '/');
   };
 
   /**
@@ -118,7 +184,7 @@ export class GameService {
   }
 
   /**
-   * Calculates the new score based on the game result and the current score.
+   * Calculates the new score based on the game result and the new score.
    * 
    * @private
    * @memberof GameService
@@ -130,6 +196,21 @@ export class GameService {
     const scoreChange = this.scoreTable[result] ?? 0;
     return currentScore + scoreChange;
   };
+
+  /**
+   * Checks the local score for a given score type.
+   * 
+   * @param scoreType - The score type to check.
+   * @returns The local score for the given score type.
+   * @private
+   * @memberof GameService 
+   * @requires CookieService to be injected.
+   * @requires cs to be an instance of CookieService.
+   * @returns {number}
+   */
+  private checkLocalScore(scoreType: string): number {
+    return parseInt(this.cs.get(scoreType) || '0');
+  }
 
   /**
    * Delays the execution of code for a specified amount of time.

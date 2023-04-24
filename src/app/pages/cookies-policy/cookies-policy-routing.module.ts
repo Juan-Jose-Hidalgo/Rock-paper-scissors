@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { NormalComponent } from './normal.component';
+import { CookiesPolicyComponent } from './cookies-policy.component';
 
 const routes: Routes = [
-  { path: '', component: NormalComponent }
+  { path: '', component: CookiesPolicyComponent }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class NormalRoutingModule { }
+export class CookiesPolicyRoutingModule { }

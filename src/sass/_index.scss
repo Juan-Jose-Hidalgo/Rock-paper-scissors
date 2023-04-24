@@ -1,4 +1,6 @@
-@forward "fonts";
-@forward "variables";
-@forward "mixins";
-@forward "reset";
+@use "fonts";
+@use "mixins";
+@use "variables";
+@use "animations";
+@use "components";
+@use "globals";
