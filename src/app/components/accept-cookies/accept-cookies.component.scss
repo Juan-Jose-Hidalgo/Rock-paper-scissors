@@ -37,6 +37,7 @@
 .accept-cookies__policy {
     grid-area: link;
     color: map-get($map: var.$colors-map, $key: "rock");
+    cursor: pointer;
 
     @media (min-width: 768px) {
         width: 70%;

@@ -1,0 +1,42 @@
+@use "mixins" as mix;
+@use "variables" as var;
+
+.cookies-policy,
+.cookies-policy__ul {
+    @include mix.flex-box(column, nowrap, center, flex-start);
+    gap: 1rem;
+}
+
+.heading-1 {
+    align-self: center;
+
+    @media (min-width: 768px) {
+        margin-bottom: 3rem;
+    }
+}
+
+.cookies-policy__btn {
+    width: 100%;
+    padding: .8rem 0;
+    border: 2px solid map-get($map: var.$colors-map, $key: "header-outline");
+    border-radius: 5px;
+    color: map-get($map: var.$colors-map, $key: "white");
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 700;
+    transition: all .3s ease;
+    cursor: pointer;
+
+    &:hover {
+        border-color: map-get($map: var.$colors-map, $key: "white");
+        background-color: map-get($map: var.$colors-map, $key: "white");
+        color: map-get($map: var.$colors-map, $key: "background");
+    }
+
+    @media (min-width:1330px) {
+        width: auto;
+        padding: 1rem 1.5rem;
+        align-self: start;
+        margin-top: 1rem;
+    }
+}

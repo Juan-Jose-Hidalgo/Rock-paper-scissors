@@ -5,6 +5,7 @@ import { AcceptCookiesComponent } from './accept-cookies/accept-cookies.componen
 import { ButtonComponent } from './button/button.component';
 import { RulesComponent } from './rules/rules.component';
 import { ScoreComponent } from './score/score.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -19,6 +20,7 @@ import { ScoreComponent } from './score/score.component';
     AcceptCookiesComponent,
     ButtonComponent,
     RulesComponent,
+    RouterModule,
     ScoreComponent,
   ],
   imports: [
