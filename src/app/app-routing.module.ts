@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CookieGuard } from './guards/cookie.guard';
 
 const routes: Routes = [
   {
@@ -9,6 +10,7 @@ const routes: Routes = [
   },
   {
     path: 'game',
+    canActivate: [CookieGuard],
     loadChildren: () => import('./pages/play/play.module').then(m => m.NormalModule)
   },
   {
