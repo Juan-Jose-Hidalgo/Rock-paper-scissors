@@ -23,3 +23,7 @@
     display: inline;
     color: map-get($map: var.$colors-map, $key: "white");
 }
+
+.footer__span {
+    @include mix.flex-box(column, nowrap, center, center);
+}
