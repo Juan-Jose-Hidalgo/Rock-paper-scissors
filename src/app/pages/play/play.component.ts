@@ -18,7 +18,7 @@ export class PlayComponent implements OnInit {
   public scoreValue = 0;
 
   constructor(
-    private cs:CookieService,
+    private cs: CookieService,
     private route: Router,
     private gs: GameService
   ) { }
@@ -36,12 +36,27 @@ export class PlayComponent implements OnInit {
     this.initScore(this.gameMode);
   }
 
-  play(userMove: string) {
-    this.gs.play(userMove);
+  /**
+   * Stores  the user's move in a cookie and navigates to the normal game results page.
+   * 
+   * @memberof PlayComponent
+   * @param userMove The move made by the user.
+   * @returns {void}
+   */
+  play(userMove: string): void {
+    this.cs.set('userMove', userMove, undefined, '/');
     this.route.navigateByUrl('/normal-game-results');
   }
 
-  initScore(gameMode: string) {
+  /**
+   * Initializes the score for a specific game mode using the gameService.
+   * 
+   * @param gameMode - The game mode for which to initialize the score.
+   * @returns The initialized score.
+   * @remarks
+   * This method makes use of the gameService to initialize the score for a specific game mode.
+   */
+  initScore(gameMode: string): void {
     this.score = this.gs.initScore(gameMode);
   }
 

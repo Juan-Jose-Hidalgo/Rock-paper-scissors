@@ -32,15 +32,39 @@ export class HomeComponent implements OnInit {
     this.checkCookies();
   }
 
-  resetScore(scoreType: string) {
+  /**
+   * Resets the score of a given score type.
+   * @param scoreType - The type of score to reset ('normal' or 'advanced').
+   * @memberof HomeComponent
+   * @returns {void}
+   * @remarks
+   * This method makes use of the GameService instance to reset the score.
+   */
+  resetScore(scoreType: string): void {
     this.gs.resetScore(scoreType);
   }
 
-  startGame(gameMode: string) {
+  /**
+   * Starts a new game with the selected game mode.
+   * @param gameMode - The selected game mode.
+   * @memberof HomeComponent
+   * @returns {void}
+   * @requires GameService - This method requires the GameService to be injected in order to function properly.
+   */
+  startGame(gameMode: string): void {
     this.cs.set('gameMode', gameMode, undefined, '/');
     this.route.navigateByUrl(`/game/${gameMode}`);
   }
 
+  /**
+   * Checks if the user has accepted the cookies and sets the value of acceptCookies accordingly.
+   * Makes use of the CookieService to check if the acceptCookies cookie is set.
+   * @remarks
+   * This method updates the value of acceptCookies property of the class based on the cookie value.
+   * 
+   * This method depends on the GameService being initialized before it can be used.
+   * @returns void
+   */
   checkCookies() {
     this.acceptCookies = this.cs.check('acceptCookies');
   }
