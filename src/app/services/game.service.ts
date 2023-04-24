@@ -80,6 +80,16 @@ export class GameService {
   }
 
   /**
+   * Checks if the acceptCookies exists.
+   * 
+   * @memberof GameService
+   * @returns {boolean}
+   */
+  checkAcceptCookies(): boolean{
+    return this.cs.check('acceptCookies');
+  }
+
+  /**
    * Asynchronously generates a move for the CPU player.
    * 
    * @async
