@@ -40,6 +40,7 @@ Users should be able to:
 
 - Solution URL: [GitHub](https://github.com/Juan-Jose-Hidalgo/Rock-paper-scissors)
 - [Live Site](https://rock-paper-scissors.jjhidalgo.com)
+- [Live Site](https://rock-paper-scissors.jjhidalgo.com/home)
 
 ## 🔨 Built with
 

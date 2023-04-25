@@ -39,7 +39,11 @@ Los usuarios deben ser capaces de:
 ### Enlaces
 
 - URL con la solución: [GitHub](https://github.com/Juan-Jose-Hidalgo/Rock-paper-scissors)
+<<<<<<< HEAD
 - [Sitio web en vivo](https://rock-paper-scissors.jjhidalgo.com)
+=======
+- [Sitio web en vivo](https://rock-paper-scissors.jjhidalgo.com/home)
+>>>>>>> release-1.3.1
 
 ## 🔨 Construido con
 
