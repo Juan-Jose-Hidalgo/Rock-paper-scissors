@@ -1,0 +1,28 @@
+@use "mixins" as mix;
+@use "variables" as var;
+
+.footer {
+    width: 90%;
+    max-width: 90rem;
+    margin: 0 auto;
+    font-size: .6875rem;
+    color: hsl(228, 45%, 44%);
+}
+
+.footer__ul {
+    @include mix.flex-box(row, nowrap, space-between, center);
+
+    @media (min-width: 768px) {
+        width: 50%;
+        margin: 0 auto;
+    }
+}
+
+.footer__a {
+    display: inline;
+    color: map-get($map: var.$colors-map, $key: "white");
+}
+
+.footer__span {
+    @include mix.flex-box(column, nowrap, center, center);
+}
