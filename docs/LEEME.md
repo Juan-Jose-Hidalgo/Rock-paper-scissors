@@ -56,7 +56,7 @@ Los usuarios deben ser capaces de:
 ## ⚙️ Requisitos previos
 
 - Node.js v18.13.0 o superior
-- Angular CLI v15.1.1 o superior
+- Angular CLI v16.0.5 o superior
 - npm v9.3.0 o superior
 
 No se asegura el funcionamiento adecuado de la aplicación con versiones anteriores de Node.js, Angular CLI o npm. Asegúrate de tener las versiones correctas instaladas para garantizar el correcto funcionamiento de la aplicación.
