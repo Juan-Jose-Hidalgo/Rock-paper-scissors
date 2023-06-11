@@ -52,7 +52,7 @@ Users should be able to:
 ## ⚙️ Prerequisites
 
 - Node.js v18.13.0 or higher
-- Angular CLI v15.1.1 or higher
+- Angular CLI v16.0.5 or higher
 - npm v9.3.0 or higher
 
 The application's proper functionality is not ensured with outdated versions of Node.js, Angular CLI, or npm. Please ensure that you have the appropriate versions installed to guarantee smooth operation of the application.
